@@ -72,7 +72,7 @@ class VpnWebSelectorHTTPServer(http.server.HTTPServer):
 
     def get_configs(self):
         path = os.path.join(os.path.pardir, "configs")
-        return os.listdir(path)
+        return [conf for conf in os.listdir(path) if conf.endswith(".ovpn")]
 
     @property
     def selected_config(self):
@@ -109,9 +109,6 @@ class VpnWebSelectorHTTPServer(http.server.HTTPServer):
 
 
 def main():
-    directory = "configs"
-    if not os.path.exists(directory):
-            os.makedirs(directory)
     os.chdir("www")
 
     server_class = VpnWebSelectorHTTPServer

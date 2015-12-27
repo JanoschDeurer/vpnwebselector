@@ -10,9 +10,6 @@ if you use a vpn provider like [Astrill](https://www.astrill.com/).
 apt-get install openvpn
 # Download the vpnwebselector
 git clone https://github.com/JanoschDeurer/vpnwebselector
-cd vpnwebselector
-# make a directory for the vpn configurations
-mkdir configs
 ```
 
 Now you have to put all the vpn configurations you want to use in the configs
