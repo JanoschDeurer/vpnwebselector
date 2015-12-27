@@ -109,6 +109,9 @@ class VpnWebSelectorHTTPServer(http.server.HTTPServer):
 
 
 def main():
+    directory = "configs"
+    if not os.path.exists(directory):
+            os.makedirs(directory)
     os.chdir("www")
 
     server_class = VpnWebSelectorHTTPServer
