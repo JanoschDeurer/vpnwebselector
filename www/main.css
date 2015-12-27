@@ -1,0 +1,27 @@
+/*
+@font-face {
+  font-family: 'NotoSans';
+  src: url('./NotoSans-Regular.ttf');
+  font-weight: normal;
+}
+@font-face {
+  font-family: 'NotoSans';
+  src: url('./NotoSans-Bold.ttf');
+  font-weight: bold; 
+}
+
+h1 {
+  font-size: 65px;
+}
+
+#wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  font-family: NotoSans, Sans; 
+
+}
+
+input {
+  width: 300px;
+}
+*/

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>VpnWebSelector</title>
+  <script src="./angular.js"></script>
+  <script src="./angular-material.js"></script>
+  <script src="./angular-animate.min.js"></script>
+  <script src="./angular-aria.min.js"></script>
+  <script src="./vpnwebselector.js"></script>
+  <link rel="stylesheet" href="./angular-material.css">
+  <link rel="stylesheet" href="./main.css">
+</head>
+<body ng-app="VpnWebSelector">
+  <div class="demo-content autocompleteDemo ng-scope">
+    <div ng-controller="QuerryController as ctrl" layout="column" ng-cloak>
+      <md-content class="md-padding">
+      <h1>VpnWebSelector</h1>
+      <form ng-submit="ctrl.submit()">
+        <md-autocomplete
+        md-no-cache="true"
+        md-autoselect="true"
+        md-selected-item="ctrl.selectedItem"
+        md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+        md-search-text="ctrl.searchText"
+        md-selected-item-change="ctrl.selectedItemChange(item)"
+        md-items="item in ctrl.querySearch(ctrl.searchText)"
+        md-item-text="item"
+        md-min-length="1"
+        placeholder="Search for a VPN config here">
+        <md-item-template>
+        <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item}}</span>
+        </md-item-template>
+        <md-not-found>
+        No states matching "{{ctrl.searchText}}" were found.
+        </md-not-found>
+        </md-autocomplete>
+        <br/>
+        <md-button class="md-raised" type="submit">Connect</md-button>
+        <md-button ng-click="ctrl.reconnect()" class="md-raised">Reconnect</md-button>
+        <md-button ng-click="ctrl.closeConnection()" class="md-raised md-warn">Close Connection</md-button>
+      </form>
+      The config currently selected is: {{ctrl.selectedConfig}}
+      </md-content>
+    </div>
+  </div>
+</body>
+</html>
