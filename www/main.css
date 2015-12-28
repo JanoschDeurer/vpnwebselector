@@ -1,27 +1,17 @@
-/*
 @font-face {
   font-family: 'NotoSans';
-  src: url('./NotoSans-Regular.ttf');
+  src: url('./NotoSans-Regular.eot?#iefix') format('embedded-opentype'),
+       url('./NotoSans-Regular.ttf') format('truetype');
   font-weight: normal;
 }
 @font-face {
   font-family: 'NotoSans';
-  src: url('./NotoSans-Bold.ttf');
+  src: url('./NotoSans-Bold.eot?#iefix') format('embedded-opentype'),
+       url('./NotoSans-Bold.ttf') format('truetype');
   font-weight: bold; 
 }
 
 h1 {
-  font-size: 65px;
+  font-size: 40px;
+  text-align: center;
 }
-
-#wrapper {
-  margin-left: auto;
-  margin-right: auto;
-  font-family: NotoSans, Sans; 
-
-}
-
-input {
-  width: 300px;
-}
-*/
