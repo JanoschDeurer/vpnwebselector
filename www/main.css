@@ -61,4 +61,5 @@ md-content {
 
 body {
   background-color: #fdf6e3;
+  min-height: 530px;
 }
