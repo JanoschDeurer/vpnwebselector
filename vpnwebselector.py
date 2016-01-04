@@ -1,7 +1,22 @@
 #!/usr/bin/python3
-"""Tool to easely setup a vpn connection
+"""
+The VpnWebSelector is a program to easily setup vpn connections via a web gui.
+Copyright © 2016 Janosch Deurer
 
-This script searches for vpn configuration files in the configs folder. It
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+This program searches for vpn configuration files in the configs folder. It
 starts a webserver and provides a web gui to select one of these configs
 connect to the corresponding server or reset the connection.
 
