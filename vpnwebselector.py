@@ -159,6 +159,8 @@ class VpnWebSelectorHTTPServer(http.server.HTTPServer):
         if self._selected_config is None:
             return
         self.terminate_vpn_connection()
+        if self._output_file is not None:
+            self._output_file.close()
         self._output_file = open('output.txt', 'w')
         self._openvpn_process = subprocess.Popen(["openvpn", "--config",
                                                   "../configs/" +
@@ -171,9 +173,11 @@ class VpnWebSelectorHTTPServer(http.server.HTTPServer):
         Exits the _openvpn_process if one exists.
         :returns: None
         """
-        self._output_file = open('output.txt', 'w')
         if self._openvpn_process is None:
             return
+        if self._output_file is not None:
+            self._output_file.close()
+        self._output_file = open('output.txt', 'w')
         self._openvpn_process.terminate()
         self._openvpn_process.wait(timeout=5)
         self._openvpn_process = None
