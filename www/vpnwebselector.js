@@ -1,11 +1,14 @@
 (function(){
-  angular.module('VpnWebSelector', ['ngMaterial']).controller('QuerryController', function($http, $timeout, $q, $log, $scope) {
+  angular.module('VpnWebSelector', ['ngMaterial']).controller('QuerryController', function($http, $timeout, $q, $log, $scope, $interval) {
     var vm = this;
     // list of `state` value/display objects
     vm.querySearch = querySearch;
     vm.selectedItemChange = selectedItemChange;
     vm.searchTextChange   = searchTextChange;
+    vm.shellOutput = "";
     getSelectedConfig();
+    getShellOutput();
+    bla = $interval(getShellOutput, 500);
     // ******************************
     // Internal methods
     // ******************************
@@ -23,6 +26,7 @@
       });
     }
     vm.submit = function(){
+      vm.selectedConfig = "loading ..."
       $log.info('Config changed to ' + vm.searchText);
       $http({
         method: 'GET',
@@ -46,6 +50,7 @@
     }
 
     vm.reconnect = function() {
+      vm.selectedConfig = "loading ..."
       $http({
         method: 'GET',
         url: '/reconnect' 
@@ -57,6 +62,7 @@
     }
 
     vm.closeConnection = function() {
+      vm.selectedConfig = "loading ..."
       $http({
         method: 'GET',
         url: '/closeConnection' 
@@ -66,6 +72,18 @@
         vm.selectedConfig = "Could not get selected config from server";
       });
     }
+
+    function getShellOutput() {
+      $http({
+        method: 'GET',
+        url: '/output.txt', 
+      }).then(function successCallback(response) {
+        vm.shellOutput = response.data;
+      }, function errorCallback(response) {
+        vm.shellOutput = "Error while getting shell output";
+      });
+    }
+
 
     function searchTextChange(text) {
       $log.info('Text changed to ' + text);

@@ -12,10 +12,12 @@
   <link rel="stylesheet" href="./main.css">
 </head>
 <body ng-app="VpnWebSelector">
-  <div class="demo-content autocompleteDemo ng-scope">
-    <div ng-controller="QuerryController as ctrl" layout="column" ng-cloak>
-      <md-content class="md-padding">
-      <h1>VpnWebSelector</h1>
+  <h1>VpnWebSelector</h1>
+  <div ng-controller="QuerryController as ctrl" layout="row" layout-xs="column" ng-cloak>
+    <md-content flex class="md-padding">
+      <div class="config">
+        Selected config: {{ctrl.selectedConfig}}
+      </div>
       <form ng-submit="ctrl.submit()">
         <md-autocomplete
         md-no-cache="true"
@@ -40,9 +42,8 @@
         <md-button ng-click="ctrl.reconnect()" class="md-raised">Reconnect</md-button>
         <md-button ng-click="ctrl.closeConnection()" class="md-raised md-warn">Close Connection</md-button>
       </form>
-      The config currently selected is: {{ctrl.selectedConfig}}
-      </md-content>
-    </div>
+    </md-content>
+    <md-content flex layout-padding class="shellOutput">{{ctrl.shellOutput}}</md-content>
   </div>
 </body>
 </html>

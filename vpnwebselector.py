@@ -43,6 +43,14 @@ class VpnWebSelectorHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
 
         super().do_GET()
 
+    def end_headers(self):
+        if self.path == "/output.txt":
+            self.send_header("Cache-Control",
+                             "no-cache, no-store, must-revalidate")
+            self.send_header("Pragma", "no-cache")
+            self.send_header("Expires", "0")
+        super().end_headers()
+
     def response(self):
         self.send_response(200)
         self.send_header("Content-type", "text/html")
@@ -90,7 +98,7 @@ class VpnWebSelectorHTTPServer(http.server.HTTPServer):
         if self._selected_config is None:
             return
         self.terminate_vpn_connection()
-        self._output_file = open('../output.txt', 'w')
+        self._output_file = open('output.txt', 'w')
         self._openvpn_process = subprocess.Popen(["openvpn", "--config",
                                                   "../configs/" +
                                                   self.selected_config],
@@ -98,6 +106,7 @@ class VpnWebSelectorHTTPServer(http.server.HTTPServer):
                                                  stderr=subprocess.STDOUT)
 
     def terminate_vpn_connection(self):
+        self._output_file = open('output.txt', 'w')
         if self._openvpn_process is None:
             return
         self._openvpn_process.terminate()
@@ -105,10 +114,17 @@ class VpnWebSelectorHTTPServer(http.server.HTTPServer):
         self._openvpn_process = None
 
     def clear_selected_config(self):
-        self._selected_config = ""
+        """
+        Reset the _selected_config to None
+        """
+        self._selected_config = None
 
 
 def main():
+    """
+    Entrypoint when called as executable
+    """
+    # Serve only files from www
     os.chdir("www")
 
     server_class = VpnWebSelectorHTTPServer

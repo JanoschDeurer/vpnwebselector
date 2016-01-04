@@ -14,4 +14,34 @@
 h1 {
   font-size: 40px;
   text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 26px;
+  padding-bottom: 26px;
+  background-color: #eee8d5;
+}
+
+.shellOutput {
+  margin: 15px;
+  height: 400px;
+  background-color: #DDDDDD;
+  white-space: pre;
+}
+
+.config {
+  background-color: #eee8d5;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  
+}
+
+md-content {
+  background-color: #fdf6e3;
+}
+
+body {
+  background-color: #fdf6e3;
 }
