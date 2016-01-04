@@ -30,7 +30,7 @@
 </head>
 <body ng-app="VpnWebSelector">
   <h1>VpnWebSelector</h1>
-  <div ng-controller="QuerryController as ctrl" layout="row" layout-xs="column" ng-cloak>
+  <div class="wrapper" ng-controller="QuerryController as ctrl" layout="column" layout-gt-md="row" ng-cloak>
     <md-content flex class="md-padding">
       <div class="config">
         Selected config: {{ctrl.selectedConfig}}
