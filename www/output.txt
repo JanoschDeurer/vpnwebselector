@@ -1,0 +1,1 @@
+This is the first time you started the VpnWebSelector. In this box you will later see the shell output of openvpn. You can search for vpn configurations in the confings folder by typing in the white input field. 
