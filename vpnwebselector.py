@@ -41,6 +41,9 @@ import re
 import json
 import subprocess
 
+# This configures the server port
+SERVER_PORT = 9000
+
 
 class VpnWebSelectorHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     """
@@ -208,7 +211,7 @@ def main():
 
     server_class = VpnWebSelectorHTTPServer
     handler_class = VpnWebSelectorHTTPRequestHandler
-    server_address = ('', 9000)
+    server_address = ('', SERVER_PORT)
     httpd = server_class(server_address, handler_class)
     httpd.serve_forever()
 

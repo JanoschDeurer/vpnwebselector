@@ -27,6 +27,12 @@ Note that ```openvpn``` is executed by the script so the executing user must
 have the rights to change the network configurations. You can enforce this by
 starting the script as root or with sudo.
 
+## Usage
+
+The server is started on port 9000, this can be changed in the beginning of the
+file ```vpnwebselector.py```. When started you can access the web GUI by
+typing ```localhost:9000``` in the your browsers address bar.
+
 
 
 
